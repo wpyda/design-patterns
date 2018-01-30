@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4.strategy</title>
+    <script type="text/javascript">
+
+	// Shipping z kosztem przesyłki (Package) zależnym od spedytora
+
+function Shipping() {
+	this.calculate = function(package) {
+		return package.weight / 4;
+	}
+}	
+
+var package = {
+	from: "123456",
+	to: "654321",
+	weight: 183
+}	
+
+var shipping = new Shipping();
+//shipping.setStrategy(new DHL());
+console.log('Total cost: $' + shipping.calculate(package));
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.singleton</title>
+    <script type="text/javascript">
+
+
+// 1. podobne obiekty Person
+
+function Person(name, surname, age) {
+	this.name = name;
+	this.surname = surname;
+	this.age = age;
+	this.showName = function() {
+		console.log("Mam na imię "+this.name);
+	}
+	return this;
+}
+
+andrzej = new Person("Andrzej", "Kowalski", 19);
+anna = new Person("Anna", "Malinowska", 23);
+krzysztof = new Person("Anna", "Malinowska", 23);
+
+andrzej.showName()
+anna.showName()
+krzysztof.showName()
+
+console.log(anna, krzysztof, anna==krzysztof);
+
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

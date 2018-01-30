@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.factory</title>
+    <script type="text/javascript">
+
+// 1. fabryka broni (Sword, Bow, Gun)
+
+function Sword() {
+	this.attack = function() {
+		console.log('--- sword --->');
+	}
+}
+
+function Bow() {
+	this.attack = function() {
+		console.log('--- bow --->');
+	}
+}
+
+function Gun() {
+	this.attack = function() {
+		console.log('--- gun --->');
+	}
+}
+
+var weapon = new Gun();
+
+// 2. użycie fabryki broni "WeaponFactory"
+
+weapon.attack();
+
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>
