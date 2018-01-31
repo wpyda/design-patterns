@@ -9,12 +9,18 @@
 // 1. podobne obiekty Person
 
 function Person(name, surname, age) {
-	this.name = name;
+	if (typeof Person.instance === 'object') {
+	    return Person.instance
+        // .instance = singleton
+    }
+
+    this.name = name;
 	this.surname = surname;
 	this.age = age;
 	this.showName = function() {
 		console.log("Mam na imię "+this.name);
 	}
+	Person.instance = this;
 	return this;
 }
 
