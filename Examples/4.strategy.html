@@ -4,25 +4,38 @@
     <meta charset="UTF-8">
     <title>4.strategy</title>
     <script type="text/javascript">
-
-	// Shipping z kosztem przesyłki (Package) zależnym od spedytora
-
-function Shipping() {
-	this.calculate = function(package) {
-		return package.weight / 4;
-	}
-}	
-
-var package = {
-	from: "123456",
-	to: "654321",
-	weight: 183
-}	
-
-var shipping = new Shipping();
-//shipping.setStrategy(new DHL());
-console.log('Total cost: $' + shipping.calculate(package));
-
+        // Shipping z kosztem przesyłki (Package) zależnym od spedytora
+        function Shipping() {
+            this.calculate = function(package) {
+                return this.strategy.calculate(package);
+            }
+            this.setStrategy = function(strategy) {
+                this.strategy = strategy;
+            }
+        }
+        function DHL() {
+            this.calculate = function(package) {
+                return package.weight / 4;
+            }
+        }
+        function UPS() {
+            this.calculate = function(package) {
+                if (package.weight < 30) {
+                    return 10;
+                }
+                return package.weight / 2;
+            }
+        }
+        var package = {
+            from: "123456",
+            to: "654321",
+            weight: 5
+        }
+        var shipping = new Shipping();
+        shipping.setStrategy(new UPS());
+        console.log('Total UPS cost: $' + shipping.calculate(package));
+        shipping.setStrategy(new DHL());
+        console.log('Total DHL cost: $' + shipping.calculate(package));
     </script>
 </head>
 <body>
