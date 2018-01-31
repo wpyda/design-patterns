@@ -58,8 +58,44 @@
 		// ZADANIE - Napisz kod fabryki generującej kolorowe wiersze tabeli, która zostanie
 		//			 użyta przez napisany na końcu pliku kod - którego nie wolno zmieniać.
 
+		//Nowy Row
+        function Row() {
+            this.getHTML = function () {
+                return '<tr class='+this.className+'><td>red</td><td class=\"fill\"></td></tr>';
+            }
+        }
 
-		/// ... tutaj możesz pisać ...
+        //Kolory row
+		function RowRed() {
+			this.className='red'
+        }
+        RowRed.prototype = new Row()
+
+        function RowBlue() {
+            this.className='blue'
+        }
+        RowBlue.prototype = new Row()
+
+        function RowGreen() {
+            this.className='green'
+        }
+        RowGreen.prototype = new Row()
+
+		//Factory
+		function RowFactory() {
+		    this.makeRow = function(color) {
+		        switch(color) {
+					case 'red':
+                        return new RowRed()
+					case 'blue':
+                        return new RowBlue()
+					case 'green':
+					    return new RowGreen()
+					default:
+					    return
+				}
+			}
+		}
 
 
 		// --------------------------------------------------------------
