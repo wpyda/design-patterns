@@ -25,7 +25,24 @@ function Gun() {
 	}
 }
 
-var weapon = new Gun();
+function WeaponFactory() {
+    this.makeWeapon = function(playerType) {
+        switch (playerType) {
+            case 'swordman':
+                return new Sword()
+            case 'bowman':
+                return new Bow()
+            case 'soldier':
+                return new Gun()
+            default:
+                throw new Exception ('no weapon')
+        }
+    }
+}
+
+//var weapon = new Gun();
+var factory = new WeaponFactory()
+var weapon = factory.makeWeapon('swordman')
 
 // 2. użycie fabryki broni "WeaponFactory"
 
